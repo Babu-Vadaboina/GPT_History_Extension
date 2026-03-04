@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "GPT Local History",
+  "version": "1.0",
+  "description": "Store ChatGPT and Gemini prompts locally",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": [
+    "https://chat.openai.com/*",
+    "https://chatgpt.com/*",
+    "https://gemini.google.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chat.openai.com/*",
+        "https://chatgpt.com/*",
+        "https://gemini.google.com/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
